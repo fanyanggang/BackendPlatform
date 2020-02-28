@@ -4,6 +4,7 @@ const (
 	// 通用错误 [0,699]
 	//
 	ERROR_CODE_SUCCESS int = 0 // 操作成功
+	ERROR_LOGIN_SUCCESS int = 1 // 正常登陆用户
 	//
 	// 调用端引发的错误 [400,499]
 	ERROR_CODE_CLIENT_ERROR  int = 499 // 请求参数错误（调用端的参数有问题）
@@ -32,6 +33,8 @@ func GetErrorMessage(errCode int) string {
 		return "请求参数错误"
 	case ERROR_CODE_SERVER_ERROR:
 		return "内部系统错误"
+	case ERROR_LOGIN_SUCCESS:
+		return "正常登陆用户"
 	}
 
 	if errCode <= 499 {
