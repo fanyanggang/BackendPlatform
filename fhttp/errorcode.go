@@ -23,6 +23,8 @@ const (
 	ERROR_CODE_NOT_EXTENDED               int = 510 // 获取资源所需要的策略并没有被满足。（RFC 2774）
 	ERROR_CODE_THREE_WAY_INTERFACE        int = 520 // 服务器请求三方依赖接口出错
 
+	ERROR_CODE_ACCOUNT_NOT_ENOUGH        int = 600 // 用户余额不足
+
 )
 
 func GetErrorMessage(errCode int) string {
@@ -35,6 +37,8 @@ func GetErrorMessage(errCode int) string {
 		return "内部系统错误"
 	case ERROR_LOGIN_SUCCESS:
 		return "正常登陆用户"
+	case ERROR_CODE_ACCOUNT_NOT_ENOUGH:
+		return "用户账户余额不足"
 	}
 
 	if errCode <= 499 {
