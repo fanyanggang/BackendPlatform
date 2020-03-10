@@ -1,20 +1,24 @@
 package fsql
 
-func InitSQLClient(sqlConfig SQLGroupConfig) error {
-
-	if sqlConfig.Master == "" || len(sqlConfig.Slaves) == 0 {
+func InitSQLClient(sqlConfig []SQLGroupConfig) error {
+	if len(sqlConfig) == 0 {
 		return nil
 	}
 
-	g, err := NewGroup(sqlConfig)
-	if err != nil {
-		return err
-	}
+	for _, d := range sqlConfig {
+		if d.Master == "" || len(d.Slaves) == 0 {
+			return nil
+		}
 
-	err = SQLGroupManager.Add(sqlConfig.Name, g)
-	if err != nil {
-		return err
-	}
+		g, err := NewGroup(d)
+		if err != nil {
+			return err
+		}
 
+		err = SQLGroupManager.Add(d.Name, g)
+		if err != nil {
+			return err
+		}
+	}
 	return nil
 }
