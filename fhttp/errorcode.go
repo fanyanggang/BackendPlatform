@@ -3,12 +3,13 @@ const (
 	//
 	// 通用错误 [0,699]
 	//
-	ERROR_CODE_SUCCESS int = 0 // 操作成功
+	ERROR_CODE_SUCCESS  int = 0 // 操作成功
 	ERROR_LOGIN_SUCCESS int = 1 // 正常登陆用户
 	//
 	// 调用端引发的错误 [400,499]
 	ERROR_CODE_CLIENT_ERROR  int = 499 // 请求参数错误（调用端的参数有问题）
 	ERROR_CODE_ILLEGAL_INPUT int = 401 // 输入非法（包含不允许的字符、超长、过短等）
+	ERROR_CODE_ILLE_USER     int = 402 // 非法用户
 	//
 	// server端引发的错误 [500,599]
 	ERROR_CODE_SERVER_ERROR               int = 500 // 服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码出现错误时出现。
@@ -24,7 +25,7 @@ const (
 	ERROR_CODE_THREE_WAY_INTERFACE        int = 520 // 服务器请求三方依赖接口出错
 
 	ERROR_CODE_ACCOUNT_NOT_ENOUGH        int = 600 // 用户余额不足
-	ERROR_CODE_DATA_NOT_EXIST       int = 601 // 数据不存在
+	ERROR_CODE_DATA_NOT_EXIST            int = 601 // 数据不存在
 
 )
 
@@ -42,6 +43,8 @@ func GetErrorMessage(errCode int) string {
 		return "用户账户余额不足"
 	case ERROR_CODE_DATA_NOT_EXIST:
 		return "数据不存在"
+	case ERROR_CODE_ILLE_USER:
+		return "用户信息错误"
 	}
 
 	if errCode <= 499 {
