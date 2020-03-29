@@ -24,6 +24,7 @@ const (
 	ERROR_CODE_THREE_WAY_INTERFACE        int = 520 // 服务器请求三方依赖接口出错
 
 	ERROR_CODE_ACCOUNT_NOT_ENOUGH        int = 600 // 用户余额不足
+	ERROR_CODE_DATA_NOT_EXIST       int = 601 // 数据不存在
 
 )
 
@@ -39,6 +40,8 @@ func GetErrorMessage(errCode int) string {
 		return "正常登陆用户"
 	case ERROR_CODE_ACCOUNT_NOT_ENOUGH:
 		return "用户账户余额不足"
+	case ERROR_CODE_DATA_NOT_EXIST:
+		return "数据不存在"
 	}
 
 	if errCode <= 499 {
