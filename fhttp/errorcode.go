@@ -11,6 +11,9 @@ const (
 	ERROR_CODE_ILLEGAL_INPUT int = 401 // 输入非法（包含不允许的字符、超长、过短等）
 	ERROR_CODE_ILLE_USER     int = 402 // 非法用户
 	ERROR_CODE_FUll_USER     int = 403 // 报名人数满员
+	ERROR_CODE_HAS_PAY       int = 404 // 已经支付
+	ERROR_CODE_HAS_ADDPUBG   int = 405 // 已经报名
+
 	//
 	// server端引发的错误 [500,599]
 	ERROR_CODE_SERVER_ERROR               int = 500 // 服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码出现错误时出现。
@@ -48,6 +51,10 @@ func GetErrorMessage(errCode int) string {
 		return "用户信息错误"
 	case ERROR_CODE_FUll_USER:
 		return "报名人数满员"
+	case ERROR_CODE_HAS_PAY:
+		return "已经支付"
+	case ERROR_CODE_HAS_ADDPUBG:
+		return "已经报名"
 	}
 
 	if errCode <= 499 {
