@@ -14,6 +14,7 @@ const (
 	ERROR_CODE_HAS_PAY       int = 404 // 已经支付
 	ERROR_CODE_HAS_ADDPUBG   int = 405 // 已经报名
 	ERROR_CODE_DATA_INEXISTENCE   int = 406 // 已经报名
+	ERROR_CODE_NO_TEAM_NUM    int = 407 // 没有添加队名
 
 	//
 	// server端引发的错误 [500,599]
@@ -58,6 +59,8 @@ func GetErrorMessage(errCode int) string {
 		return "已经报名"
 	case ERROR_CODE_DATA_INEXISTENCE:
 		return "数据不存在"
+	case ERROR_CODE_NO_TEAM_NUM:
+		return "没有添加队名"
 	}
 
 	if errCode <= 499 {
