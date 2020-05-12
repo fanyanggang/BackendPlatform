@@ -1,4 +1,5 @@
 package fhttp
+
 const (
 	//
 	// 通用错误 [0,699]
@@ -7,14 +8,15 @@ const (
 	ERROR_LOGIN_SUCCESS int = 1 // 正常登陆用户
 	//
 	// 调用端引发的错误 [400,499]
-	ERROR_CODE_CLIENT_ERROR  int = 499 // 请求参数错误（调用端的参数有问题）
-	ERROR_CODE_ILLEGAL_INPUT int = 401 // 输入非法（包含不允许的字符、超长、过短等）
-	ERROR_CODE_ILLE_USER     int = 402 // 非法用户
-	ERROR_CODE_FUll_USER     int = 403 // 报名人数满员
-	ERROR_CODE_HAS_PAY       int = 404 // 已经支付
-	ERROR_CODE_HAS_ADDPUBG   int = 405 // 已经报名
-	ERROR_CODE_DATA_INEXISTENCE   int = 406 // 已经报名
-	ERROR_CODE_NO_TEAM_NUM    int = 407 // 没有添加队名
+	ERROR_CODE_CLIENT_ERROR     int = 499 // 请求参数错误（调用端的参数有问题）
+	ERROR_CODE_ILLEGAL_INPUT    int = 401 // 输入非法（包含不允许的字符、超长、过短等）
+	ERROR_CODE_ILLE_USER        int = 402 // 非法用户
+	ERROR_CODE_FUll_USER        int = 403 // 报名人数满员
+	ERROR_CODE_HAS_PAY          int = 404 // 已经支付
+	ERROR_CODE_HAS_ADDPUBG      int = 405 // 已经报名
+	ERROR_CODE_DATA_INEXISTENCE int = 406 // 已经报名
+	ERROR_CODE_NO_TEAM_NUM      int = 407 // 没有添加队名
+	ERROR_CODE_NO_NICKNAME      int = 408 // 没有添加昵称
 
 	//
 	// server端引发的错误 [500,599]
@@ -30,8 +32,8 @@ const (
 	ERROR_CODE_NOT_EXTENDED               int = 510 // 获取资源所需要的策略并没有被满足。（RFC 2774）
 	ERROR_CODE_THREE_WAY_INTERFACE        int = 520 // 服务器请求三方依赖接口出错
 
-	ERROR_CODE_ACCOUNT_NOT_ENOUGH        int = 600 // 用户余额不足
-	ERROR_CODE_DATA_NOT_EXIST            int = 601 // 数据不存在
+	ERROR_CODE_ACCOUNT_NOT_ENOUGH int = 600 // 用户余额不足
+	ERROR_CODE_DATA_NOT_EXIST     int = 601 // 数据不存在
 
 )
 
@@ -61,6 +63,8 @@ func GetErrorMessage(errCode int) string {
 		return "数据不存在"
 	case ERROR_CODE_NO_TEAM_NUM:
 		return "没有添加队名"
+	case ERROR_CODE_NO_NICKNAME:
+		return "没有添加昵称"
 	}
 
 	if errCode <= 499 {
